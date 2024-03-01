@@ -20,7 +20,7 @@ class StokSeeder extends Seeder
                 'barang_id' => 1,
                 'user_id' => 1,
                 'stok_tanggal' => '2024-02-28 14:38:29',
-                'stok_jumlah' => 100,
+                'stok_jumlah' => 87,
             ],
             [
                 'stok_id' => 2,
