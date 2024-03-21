@@ -322,6 +322,11 @@ return [
             'icon' => 'far fa-fw fa-file',
         ],
         [
+            'text' => 'Users',
+            'url' => 'm_user',
+            'icon' => 'far fa-fw fa-file',
+        ],
+        [
             'text' => 'pages',
             'url' => 'admin/pages',
             'icon' => 'far fa-fw fa-file',

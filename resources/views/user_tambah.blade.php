@@ -10,6 +10,16 @@
 
 <body>
     <h1>Form Tambah Data User</h1>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+
+    @endif
     <a href="{{ route('/user') }}">Kembali</a>
     <form action="{{ route('/user/tambah_simpan') }}" method="post">
         {{ csrf_field() }}
