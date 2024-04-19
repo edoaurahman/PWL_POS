@@ -30,7 +30,7 @@ class BarangController extends Controller
 
     public function list(Request $request)
     {
-        $barang = BarangModel::select('barang_id', 'kategori_id', 'barang_kode', 'barang_nama', 'harga_beli', 'harga_jual')->with('kategori', 'stok');
+        $barang = BarangModel::select('barang_id', 'kategori_id', 'barang_kode', 'barang_nama', 'harga_beli', 'harga_jual')->with('kategori', 'stok')->orderBy('updated_at', 'desc');
 
         return DataTables::of($barang)
             ->addIndexColumn() // menambahkan kolom index / no urut (default nama kolom: DT_RowIndex)
@@ -87,7 +87,7 @@ class BarangController extends Controller
         $barang = BarangModel::create($dataBarang);
         $dataStok = [
             'barang_id' => $barang->barang_id,
-            'user_id' => '3',
+            'user_id' => auth()->user()->user_id,
             'stok_tanggal' => $validated['stok_tanggal'],
             'stok_jumlah' => $validated['stok_jumlah'],
         ];

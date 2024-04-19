@@ -26,7 +26,7 @@ class LevelController extends Controller
 
     public function list(Request $request)
     {
-        $level = LevelModel::select('level_id', 'level_kode', 'level_nama');
+        $level = LevelModel::select('level_id', 'level_kode', 'level_nama')->orderBy('updated_at', 'desc');
 
         return DataTables::of($level)
             ->addIndexColumn() // menambahkan kolom index / no urut (default nama kolom: DT_RowIndex)

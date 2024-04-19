@@ -29,7 +29,7 @@ class KategoriController extends Controller
 
     public function list(Request $request)
     {
-        $kategori = KategoriModel::select('kategori_id', 'kategori_kode', 'kategori_nama');
+        $kategori = KategoriModel::select('kategori_id', 'kategori_kode', 'kategori_nama')->orderBy('updated_at', 'desc');
 
         return DataTables::of($kategori)
             ->addIndexColumn() // menambahkan kolom index / no urut (default nama kolom: DT_RowIndex)

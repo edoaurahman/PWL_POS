@@ -30,7 +30,7 @@ class PenjualanController extends Controller
 
     public function list(Request $request)
     {
-        $penjualan = PenjualanModel::select('penjualan_id', 'user_id', 'pembeli', 'penjualan_kode', 'penjualan_tanggal')->with('user')->orderBy('penjualan_id', 'desc');
+        $penjualan = PenjualanModel::select('penjualan_id', 'user_id', 'pembeli', 'penjualan_kode', 'penjualan_tanggal')->with('user')->orderBy('updated_at', 'desc');
 
         return DataTables::of($penjualan)
             ->addIndexColumn() // menambahkan kolom index / no urut (default nama kolom: DT_RowIndex)
@@ -88,7 +88,7 @@ class PenjualanController extends Controller
             'harga' => 'required',
         ]);
         $penjualan = new PenjualanModel();
-        $penjualan->user_id = '4';
+        $penjualan->user_id = auth()->user()->user_id;
         $penjualan->pembeli = $validated['pembeli'];
         $penjualan->penjualan_kode = 'JL' . date('YmdHis');
         $penjualan->penjualan_tanggal = $validated['tanggal'];
